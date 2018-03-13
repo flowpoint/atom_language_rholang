@@ -10,41 +10,63 @@
     { "include": "#lineComment"},
     { "include": "#blockComment"},
     { "include": "#constants"},
-    { "include": "#processes"},
-    { "include": "#primitive"}
+    { "include": "#process"},
+    { "include": "#primitive"},
+    { "include": "#binop"}
 
   ],
   "repository": {
     "lineComment": {
-       "match": "//",
+       "match": "//.*",
        "name": "comment.line.double-slash.rholang"
      },
     "blockComment": {
-      "begin": "\/\\*",
+      "begin": "\/\\*.*",
       "name": "comment.block.rholang",
       "end": "\\*\/"
     },
-    "processes": {
-
+    "process": {
+      "name": "meta.process.rholang",
       "patterns": [
         { "include": "$self"},
         { "match": "\\bNil\\b",
-          "name": "constant.language.rholang"},
-        { "begin": "(Nils)(.*?)(Values)",
-          "name": "entity.function.process.rholang",
-          "beginCaptures":{
-            "0": {"name": "entity.other.nil.rholang"},
-            "1": {"name": "constant.language.rholang"},
-            "2": {"name": "constant.language.rholang"}
-          },
-          "end": "(a) (b) (d)",
-          "endCaptures":{
-            "0": {"name":"invalid.illegal.rholang"},
-            "1": {"name":"invalid.illegal.rholang"},
-            "2": {"name": "constant.language.rholang"}
+          "name": "constant.language.rholang"
+        },
+        { "match": "(contract)\\s*(\\w*)\\s*\\(((?:\\w*|,|\\s)+)\\)",
+          "name": "entity.function.contract.rholang",
+          "captures":{
+            "0": {"name": "entity.function.contract.rholang"},
+            "1": {"name": "entity.keyword.rholang"},
+            "2": {"name": "variable.language.channel.rholang"},
+            "3": {"name": "variable.language.channel.rholang"}
           }
-        }
+        },
+        { "match": "(for)\\s*\\(((?:\\s|\\w|<-|;)*)\\)\\W",
+          "name": "entity.function.for.rholang",
+          "captures": {
+            "0": {"name": "entity.function.for.rholang"},
+            "1": {"name": "entity.keyword.rholang"},
+            "2": {"name": "variable.language.channel.rholang"}
+          }
+        },
+        { "match": "\\bmatch\\b",
+          "name": "entity.function.match.rholang"
+        },
+        { "match": "\\bif\\b",
+          "name": "entity.function.if.rholang"
+        },
+        { "match": "\\b\\*\\b",
+          "name": "entity.function.star.rholang"
+        },
+        { "match": "(new)\\s*((?:\\w*|,|\\s*)+)\\s*in\\W",
+          "name": "storage.type.namespace.rholang",
+          "captures": {
+            "0": {"name": "storage.type.namespace.rholang"},
+            "1": {"name": "entity.keyword.rholang"},
+            "2": {"name": "variable.language.channel.rholang"}
+          }
 
+        }
       ]
     },
     "primitive": {
@@ -52,7 +74,7 @@
         { "match": "\\b(true|false)\\b",
           "name": "constant.language.bool.rholang"
         },
-        { "match": "\\d+",
+        { "match": "\\W\\d+\\W",
           "name": "constant.numeric.rholang"
         },
         { "begin": "\"",
@@ -63,19 +85,54 @@
           "end": "'",
           "name": "string.quoted.single.rholang"
         },
+        { "begin": "\\bDateTime\\s*\\(",
+          "end": "\\)",
+          "name": "constant.other.datatime"
+        },
         { "begin": "`",
           "end": "`",
-          "name": "constant.language.datetime.rholang"
+          "name": "constant.language.uri.rholang"
         }
       ]
 
     },
     "binop": {
-
+      "patterns": [
+        { "match": "\\=\\=",
+          "name": "keyword.operator.binop.rholang"
+        },
+        { "match": "!=",
+          "name": "keyword.operator.binop.rholang"
+        },
+        { "match": "\\b(and|or)\\b",
+          "name": "keyword.operator.binop.rholang"
+        },
+        { "match": "\\+",
+          "name": "keyword.operator.binop.rholang"
+        },
+        { "match": "(\\*|\\%)",
+          "name": "keyword.operator.binop.rholang"
+        },
+        { "match": "(\\-|\\/)",
+          "name": "keyword.operator.binop.rholang"
+        },
+        { "match": "(\\<\\=|\\<|\\>\\=|\\>)",
+          "name": "keyword.operator.binop.rholang"
+        },
+        { "match": "\\b(bitand|bitor)\\b",
+          "name": "keyword.operator.binop.rholang"
+        }
+      ]
     },
     "unop": {
-
+      "patterns": [
+        { "match": "\\b(?:not|bitnot|\\+|\\-)\\b",
+          "name": "keyword.operator.unop.rholang"
+        }
+      ]
     }
+
+
 
 
   }
