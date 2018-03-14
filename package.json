@@ -2,10 +2,10 @@
   "name": "language-rholang",
   "main": "./lib/language-rholang",
   "version": "0.0.0",
-  "description": "A short description of your package",
+  "description": "Rholang language grammar support",
   "keywords": [
   ],
-  "repository": "https://github.com/atom/language-rholang",
+  "repository": "https://github.com/atom/atom_language_rholang",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"

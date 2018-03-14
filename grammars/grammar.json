@@ -9,11 +9,7 @@
   "patterns": [
     { "include": "#lineComment"},
     { "include": "#blockComment"},
-    { "include": "#constants"},
-    { "include": "#process"},
-    { "include": "#primitive"},
-    { "include": "#binop"}
-
+    { "include": "#process"}
   ],
   "repository": {
     "lineComment": {
@@ -21,52 +17,86 @@
        "name": "comment.line.double-slash.rholang"
      },
     "blockComment": {
-      "begin": "\/\\*.*",
+      "begin": "\/\\*",
       "name": "comment.block.rholang",
       "end": "\\*\/"
+    },
+    "grouping": {
+      "begin": "\\{",
+      "end": "\\}",
+      "beginCaptures": {"0":{"name": "punctuation.curl_bracket.open.rholang"}},
+      "endCaptures": {"0":{"name": "punctuation.curl_bracket.open.rholang"}},
+      "patterns": [
+        { "include": "#process"}
+      ]
     },
     "process": {
       "name": "meta.process.rholang",
       "patterns": [
-        { "include": "$self"},
         { "match": "\\bNil\\b",
           "name": "constant.language.rholang"
         },
-        { "match": "(contract)\\s*(\\w*)\\s*\\(((?:\\w*|,|\\s)+)\\)",
+        { "begin": "(?=\\bcontract\\b)",
+          "end": "(?<=})",
           "name": "entity.function.contract.rholang",
-          "captures":{
-            "0": {"name": "entity.function.contract.rholang"},
-            "1": {"name": "entity.keyword.rholang"},
-            "2": {"name": "variable.language.channel.rholang"},
-            "3": {"name": "variable.language.channel.rholang"}
-          }
+          "patterns":[
+            { "match": "\\bcontract\\b",
+              "name": "keyword.other.contract.rholang"
+            },
+            { "include": "#name"},
+            { "include": "#tuple"},
+            { "include": "#grouping"}
+          ]
         },
-        { "match": "(for)\\s*\\(((?:\\s|\\w|<-|;)*)\\)\\W",
+        { "begin": "(?=\\bfor\\b)",
+          "end": "(?<=})",
           "name": "entity.function.for.rholang",
-          "captures": {
-            "0": {"name": "entity.function.for.rholang"},
-            "1": {"name": "entity.keyword.rholang"},
-            "2": {"name": "variable.language.channel.rholang"}
-          }
+          "patterns": [
+            { "match": "\\bfor\\b",
+              "name": "keyword.other.for.rholang"
+            },
+            { "include": "#tuple"},
+            { "include": "#grouping"}
+          ]
         },
-        { "match": "\\bmatch\\b",
-          "name": "entity.function.match.rholang"
+        { "begin": "(?=\\bmatch\\b)",
+          "end": "(?=}\\s*}|\\|)",
+          "name": "entity.function.match.rholang",
+          "patterns": [
+            { "match": "\\b(match|with)\\b",
+              "name": "keyword.other.match.rholang"
+            },
+            { "include": "#name"},
+            { "include": "#grouping"},
+            { "include": "#nonlinarr"}
+          ]
         },
-        { "match": "\\bif\\b",
-          "name": "entity.function.if.rholang"
+        { "begin": "(?=\\bif\\b)",
+          "end": "(?<=else)",
+          "name": "entity.function.if.rholang",
+          "patterns": [
+            { "match": "\\b(if|else)\\b",
+              "name": "keyword.other.if.rholang"
+            },
+            { "include": "#tuple"}
+          ]
         },
-        { "match": "\\b\\*\\b",
-          "name": "entity.function.star.rholang"
+        { "begin": "(?=\\bnew\\b)",
+          "end": "(?<=})",
+          "name": "entity.function.new.rholang",
+          "patterns": [
+            { "match": "\\b(new|in)\\b",
+              "name": "keyword.other.new.rholang"
+            },
+            { "include": "#name"},
+            { "include": "#grouping"}
+          ]
         },
-        { "match": "(new)\\s*((?:\\w*|,|\\s*)+)\\s*in\\W",
-          "name": "storage.type.namespace.rholang",
-          "captures": {
-            "0": {"name": "storage.type.namespace.rholang"},
-            "1": {"name": "entity.keyword.rholang"},
-            "2": {"name": "variable.language.channel.rholang"}
-          }
-
-        }
+        { "include": "#binop"},
+        { "include": "#unop"},
+        { "include": "#lineComment"},
+        { "include": "#blockComment"},
+        { "include": "#primitive"}
       ]
     },
     "primitive": {
@@ -130,10 +160,44 @@
           "name": "keyword.operator.unop.rholang"
         }
       ]
+    },
+    "linarrow": {
+      "match": "<-",
+      "name": "keyword.operator.linarr.rholang"
+    },
+    "nonlinarrow": {
+      "match": "(<!|<<|<=)",
+      "name": "keyword.operator.nonlinarr.rholang"
+    },
+    "tuple": {
+      "begin": "\\(",
+      "end": "\\)",
+      "beginCaptures": {"0":{"name": "punctuation.parenthesis.open.rholang"}},
+      "endCaptures": {"0":{"name": "punctuation.parenthesis.open.rholang"}},
+      "patterns": [
+        { "include": "#name"}
+      ]
+    },
+    "list": {
+      "begin": "\\[",
+      "end": "\\]",
+      "beginCaptures": {"0":{"name": "punctuation.squ_bracket.open.rholang"}},
+      "endCaptures": {"0":{"name": "punctuation.squ_bracket.open.rholang"}},
+      "patterns": [
+        { "include": "#name"}
+      ]
+    },
+    "name": {
+      "match": "\\w+",
+      "captures": {"0": {"name": "variable.name.rholang"}},
+    },
+    "send": {
+      "match": "(!|!!)",
+      "name":"constant.character.send.rholang"
+    },
+    "quote": {
+      "match": "@",
+      "name":"constant.character.quote.rholang"
     }
-
-
-
-
   }
 }
