@@ -2,10 +2,14 @@
   "name": "language-rholang",
   "main": "./lib/language-rholang",
   "version": "0.0.0",
-  "description": "Rholang language grammar support",
+  "description": "Rholang language highlighting and grammar support",
   "keywords": [
+    "rholang",
+    "highlighting",
+    "grammar",
+    ".rho"
   ],
-  "repository": "https://github.com/atom/atom_language_rholang",
+  "repository": "https://github.com/flowpoint/atom_language_rholang",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
