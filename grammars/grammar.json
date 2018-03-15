@@ -189,14 +189,14 @@
     },
     "name": {
       "match": "\\w+",
-      "captures": {"0": {"name": "variable.name.rholang"}},
+      "name": "variable.name.rholang"
     },
     "send": {
       "match": "(!|!!)",
       "name":"constant.character.send.rholang"
     },
     "quote": {
-      "match": "@",
+      "match": "\\@",
       "name":"constant.character.quote.rholang"
     }
   }
