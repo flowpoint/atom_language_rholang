@@ -1,6 +1,6 @@
 {
   "name": "language-rholang",
-  "main": "./lib/language-rholang",
+  "main": "./lib/main",
   "version": "0.1.0",
   "description": "Rholang language highlighting and grammar support",
   "keywords": [
