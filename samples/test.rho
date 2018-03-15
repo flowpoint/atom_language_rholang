@@ -1,0 +1,14 @@
+// A simple HelloWorld contract demonstrating a contract being rerun
+/*foldingStopMarker */
+
+
+new bla in {
+  contract HelloWorld (blab) = {
+    for (blub <- cd) { //fsdf
+      match blip with //
+        baba    => { //
+          oops !! .
+        }
+          }
+  }
+}

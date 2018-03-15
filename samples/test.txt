@@ -1,0 +1,10 @@
+//test
+
+contract
+
+contract name (inputchannel) = {
+
+}
+new  in {
+
+}

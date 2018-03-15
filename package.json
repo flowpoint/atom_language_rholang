@@ -7,12 +7,22 @@
     "rholang",
     "highlighting",
     "grammar",
+    "snippets",
+    "autocomplete",
     ".rho"
   ],
   "repository": "https://github.com/flowpoint/atom_language_rholang",
+  "author": "flowpoint <flowpoint@protonmail.com> ()",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
+  },
+  "providedServices": {
+    "autocomplete.provider": {
+      "versions": {
+        "2.0.0": "getProvider"
+      }
+    }
   },
   "dependencies": {}
 }

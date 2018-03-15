@@ -1,0 +1,58 @@
+[
+  {
+		"text": "new",
+    "displayText": "new _",
+		"snippet": "new ${1:channelname} in {\n\t$2\n}",
+		"description": "make new named channel in private scope { } $4",
+		"descriptionMoreURL": "",
+    "type": ""
+	},
+  {
+		"text": "for",
+    "displayText": "for (_) {}",
+		"snippet": "for (${1:contentvar} <- ${2:msgchannel}) {\n\t$3\n}",
+		"description": "simultaneously consume one message on channels and bind",
+		"descriptionMoreURL": "",
+    "type": ""
+	},
+  {
+		"text": "contract",
+    "displayText": "contract _ (_) {}",
+		"snippet": "contract ${1:name} (${2:inputchannel}) = {\n\t$3\n}",
+		"description": "process spawning copy of body when recieving msg",
+		"descriptionMoreURL": "",
+    "type": ""
+	},
+  {
+		"text": "match",
+    "displayText": "match _ with _ => {}",
+		"snippet": "match ${1:struct} with\n\t${2:components} => {\n\t\t$3\n\t}",
+		"description": "deconstructing bind, structural matching",
+		"descriptionMoreURL": "",
+    "type": ""
+	},
+  {
+		"text": "nil",
+    "displayText": "Nil",
+		"snippet": "Nil",
+		"description": "Nil process",
+		"descriptionMoreURL": "",
+    "type": ""
+	},
+  {
+		"text": "display",
+    "displayText": "$.display()",
+		"snippet": "$1.display($2)",
+		"description": "display",
+		"descriptionMoreURL": "",
+    "type": ""
+	},
+  {
+		"text": "map",
+    "displayText": "Map()",
+		"snippet": "Map()",
+		"description": "Map",
+		"descriptionMoreURL": "",
+    "type": ""
+	}
+]
