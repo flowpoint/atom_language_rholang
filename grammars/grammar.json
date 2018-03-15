@@ -27,6 +27,8 @@
       "beginCaptures": {"0":{"name": "punctuation.curl_bracket.open.rholang"}},
       "endCaptures": {"0":{"name": "punctuation.curl_bracket.open.rholang"}},
       "patterns": [
+        { "include": "#lineComment"},
+        { "include": "#blockComment"},
         { "include": "#process"}
       ]
     },
@@ -43,6 +45,8 @@
             { "match": "\\bcontract\\b",
               "name": "keyword.other.contract.rholang"
             },
+            { "include": "#lineComment"},
+            { "include": "#blockComment"},
             { "include": "#name"},
             { "include": "#tuple"},
             { "include": "#grouping"}
@@ -55,6 +59,8 @@
             { "match": "\\bfor\\b",
               "name": "keyword.other.for.rholang"
             },
+            { "include": "#lineComment"},
+            { "include": "#blockComment"},
             { "include": "#tuple"},
             { "include": "#grouping"}
           ]
@@ -66,6 +72,8 @@
             { "match": "\\b(match|with)\\b",
               "name": "keyword.other.match.rholang"
             },
+            { "include": "#lineComment"},
+            { "include": "#blockComment"},
             { "include": "#name"},
             { "include": "#grouping"},
             { "include": "#nonlinarr"}
@@ -88,6 +96,8 @@
             { "match": "\\b(new|in)\\b",
               "name": "keyword.other.new.rholang"
             },
+            { "include": "#lineComment"},
+            { "include": "#blockComment"},
             { "include": "#name"},
             { "include": "#grouping"}
           ]
@@ -175,6 +185,8 @@
       "beginCaptures": {"0":{"name": "punctuation.parenthesis.open.rholang"}},
       "endCaptures": {"0":{"name": "punctuation.parenthesis.open.rholang"}},
       "patterns": [
+        { "include": "#lineComment"},
+        { "include": "#blockComment"},
         { "include": "#name"}
       ]
     },
@@ -184,6 +196,8 @@
       "beginCaptures": {"0":{"name": "punctuation.squ_bracket.open.rholang"}},
       "endCaptures": {"0":{"name": "punctuation.squ_bracket.open.rholang"}},
       "patterns": [
+        { "include": "#lineComment"},
+        { "include": "#blockComment"},
         { "include": "#name"}
       ]
     },
