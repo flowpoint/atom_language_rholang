@@ -1,0 +1,217 @@
+{
+  "scopeName": "source.rho",
+  "name": "rholang",
+  "fileTypes": [
+    "rho"
+  ],
+  "foldingStartMarker": "{",
+  "foldingStopMarker": "}",
+  "patterns": [
+    { "include": "#lineComment"},
+    { "include": "#blockComment"},
+    { "include": "#process"}
+  ],
+  "repository": {
+    "lineComment": {
+       "match": "//.*",
+       "name": "comment.line.double-slash.rholang"
+     },
+    "blockComment": {
+      "begin": "\/\\*",
+      "name": "comment.block.rholang",
+      "end": "\\*\/"
+    },
+    "grouping": {
+      "begin": "\\{",
+      "end": "\\}",
+      "beginCaptures": {"0":{"name": "punctuation.curl_bracket.open.rholang"}},
+      "endCaptures": {"0":{"name": "punctuation.curl_bracket.open.rholang"}},
+      "patterns": [
+        { "include": "#lineComment"},
+        { "include": "#blockComment"},
+        { "include": "#process"}
+      ]
+    },
+    "process": {
+      "name": "meta.process.rholang",
+      "patterns": [
+        { "match": "\\bNil\\b",
+          "name": "constant.language.rholang"
+        },
+        { "begin": "(?=\\bcontract\\b)",
+          "end": "(?<=})",
+          "name": "entity.function.contract.rholang",
+          "patterns":[
+            { "match": "\\bcontract\\b",
+              "name": "keyword.other.contract.rholang"
+            },
+            { "include": "#lineComment"},
+            { "include": "#blockComment"},
+            { "include": "#name"},
+            { "include": "#tuple"},
+            { "include": "#grouping"}
+          ]
+        },
+        { "begin": "(?=\\bfor\\b)",
+          "end": "(?<=})",
+          "name": "entity.function.for.rholang",
+          "patterns": [
+            { "match": "\\bfor\\b",
+              "name": "keyword.other.for.rholang"
+            },
+            { "include": "#lineComment"},
+            { "include": "#blockComment"},
+            { "include": "#tuple"},
+            { "include": "#grouping"}
+          ]
+        },
+        { "begin": "(?=\\bmatch\\b)",
+          "end": "(?=}\\s*}|\\|)",
+          "name": "entity.function.match.rholang",
+          "patterns": [
+            { "match": "\\b(match|with)\\b",
+              "name": "keyword.other.match.rholang"
+            },
+            { "include": "#lineComment"},
+            { "include": "#blockComment"},
+            { "include": "#name"},
+            { "include": "#grouping"},
+            { "include": "#nonlinarr"}
+          ]
+        },
+        { "begin": "(?=\\bif\\b)",
+          "end": "(?<=else)",
+          "name": "entity.function.if.rholang",
+          "patterns": [
+            { "match": "\\b(if|else)\\b",
+              "name": "keyword.other.if.rholang"
+            },
+            { "include": "#tuple"}
+          ]
+        },
+        { "begin": "(?=\\bnew\\b)",
+          "end": "(?<=})",
+          "name": "entity.function.new.rholang",
+          "patterns": [
+            { "match": "\\b(new|in)\\b",
+              "name": "keyword.other.new.rholang"
+            },
+            { "include": "#lineComment"},
+            { "include": "#blockComment"},
+            { "include": "#name"},
+            { "include": "#grouping"}
+          ]
+        },
+        { "include": "#binop"},
+        { "include": "#unop"},
+        { "include": "#lineComment"},
+        { "include": "#blockComment"},
+        { "include": "#primitive"}
+      ]
+    },
+    "primitive": {
+      "patterns": [
+        { "match": "\\b(true|false)\\b",
+          "name": "constant.language.bool.rholang"
+        },
+        { "match": "\\W\\d+\\W",
+          "name": "constant.numeric.rholang"
+        },
+        { "begin": "\"",
+          "end": "\"",
+          "name": "string.quoted.double.rholang"
+        },
+        { "begin": "'",
+          "end": "'",
+          "name": "string.quoted.single.rholang"
+        },
+        { "begin": "\\bDateTime\\s*\\(",
+          "end": "\\)",
+          "name": "constant.other.datatime"
+        },
+        { "begin": "`",
+          "end": "`",
+          "name": "constant.language.uri.rholang"
+        }
+      ]
+
+    },
+    "binop": {
+      "patterns": [
+        { "match": "\\=\\=",
+          "name": "keyword.operator.binop.rholang"
+        },
+        { "match": "!=",
+          "name": "keyword.operator.binop.rholang"
+        },
+        { "match": "\\b(and|or)\\b",
+          "name": "keyword.operator.binop.rholang"
+        },
+        { "match": "\\+",
+          "name": "keyword.operator.binop.rholang"
+        },
+        { "match": "(\\*|\\%)",
+          "name": "keyword.operator.binop.rholang"
+        },
+        { "match": "(\\-|\\/)",
+          "name": "keyword.operator.binop.rholang"
+        },
+        { "match": "(\\<\\=|\\<|\\>\\=|\\>)",
+          "name": "keyword.operator.binop.rholang"
+        },
+        { "match": "\\b(bitand|bitor)\\b",
+          "name": "keyword.operator.binop.rholang"
+        }
+      ]
+    },
+    "unop": {
+      "patterns": [
+        { "match": "\\b(?:not|bitnot|\\+|\\-)\\b",
+          "name": "keyword.operator.unop.rholang"
+        }
+      ]
+    },
+    "linarrow": {
+      "match": "<-",
+      "name": "keyword.operator.linarr.rholang"
+    },
+    "nonlinarrow": {
+      "match": "(<!|<<|<=)",
+      "name": "keyword.operator.nonlinarr.rholang"
+    },
+    "tuple": {
+      "begin": "\\(",
+      "end": "\\)",
+      "beginCaptures": {"0":{"name": "punctuation.parenthesis.open.rholang"}},
+      "endCaptures": {"0":{"name": "punctuation.parenthesis.open.rholang"}},
+      "patterns": [
+        { "include": "#lineComment"},
+        { "include": "#blockComment"},
+        { "include": "#name"}
+      ]
+    },
+    "list": {
+      "begin": "\\[",
+      "end": "\\]",
+      "beginCaptures": {"0":{"name": "punctuation.squ_bracket.open.rholang"}},
+      "endCaptures": {"0":{"name": "punctuation.squ_bracket.open.rholang"}},
+      "patterns": [
+        { "include": "#lineComment"},
+        { "include": "#blockComment"},
+        { "include": "#name"}
+      ]
+    },
+    "name": {
+      "match": "\\w+",
+      "name": "variable.name.rholang"
+    },
+    "send": {
+      "match": "(!|!!)",
+      "name":"constant.character.send.rholang"
+    },
+    "quote": {
+      "match": "\\@",
+      "name":"constant.character.quote.rholang"
+    }
+  }
+}
