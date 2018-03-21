@@ -41,7 +41,7 @@
 	},
   {
 		"text": "display",
-    "displayText": "$.display()",
+    "displayText": "$1.display($2)",
 		"snippet": "$1.display($2)",
 		"description": "display",
 		"descriptionMoreURL": "",

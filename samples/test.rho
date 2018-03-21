@@ -1,14 +1,20 @@
-// A simple HelloWorld contract demonstrating a contract being rerun
-/*foldingStopMarker */
+// A simple contract
 
-
-new bla in {
-  contract HelloWorld (blab) = {
-    for (blub <- cd) { //fsdf
-      match blip with //
-        baba    => { //
-          oops !! .
-        }
-          }
-  }
+new helloworld in {
+  contract helloWorld (name) = {
+    "hello, ".display(name, "!\n")
+  } |
+  helloworld("Joe")
 }
+
+/*
+new a in {
+  contract b (c) = {
+    for (d <- c) {
+      match d with
+        true => {
+          "hello".display() |
+        }
+    }
+  }
+} */
