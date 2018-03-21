@@ -1,6 +1,6 @@
 # language-rholang package
 
-This is the early stage of editor support for [Rholang][rho-github]. For now, it has only support for syntax highlighting. :smile:
+This is the early stage of editor support for [Rholang][rho-github]. :smile:
 
 > **Rholang** is a fully featured, general purpose, Turing-complete programming language built from the rho-calculus. It is a behaviorally typed, **r**-eflective, **h**-igher **o**-rder process language and the official smart contracting language of [RChain][rchain-coop]. Its purpose is to concretize fine-grained, programmatic concurrency. [RChain Architecture][arch-rholang]
 
