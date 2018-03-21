@@ -3,7 +3,7 @@
 		"text": "new",
     "displayText": "new _",
 		"snippet": "new ${1:channelname} in {\n\t$2\n}",
-		"description": "make new named channel in private scope { } $4",
+		"description": "make new named channel in private scope { }",
 		"descriptionMoreURL": "",
     "type": ""
 	},
